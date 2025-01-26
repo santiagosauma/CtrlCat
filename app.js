@@ -17,3 +17,4 @@ socialButton.addEventListener('click', () => {
     hideAll()
     socialInput.classList.toggle("hidden")
 })
+

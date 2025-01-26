@@ -23,12 +23,13 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-}
-
-.socialInput {
     flex-direction: column;
     justify-content: center;
     row-gap: 0.5rem;
+}
+
+.socialInput {
+    
 }
 
 /* Upload Image CSS*/

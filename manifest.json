@@ -2,9 +2,12 @@
     "manifest_version": 3,
     "name": "CtrlCat",
     "description": "Store certain links and information you paste often, so you don't need to search them all the time",
-    "version": "1.0",
+    "version": "0.01",
     "action": {
         "default_popup": "index.html",
         "default_icon": "CtrlCatLogo.png"
-    }
+    },
+    "permissions": [
+        "storage"
+    ]
 }
