@@ -26,7 +26,7 @@ saveButtonInfo.addEventListener('click', () =>{
     if(infoBoxInput.value.trim()){
         chrome.storage.local.get(['Info'], (result) =>
         {
-            const info = result.info || []
+            const info = result.Info || []
             const newInfo = {
                 id: Date.now(),
                 text: infoBoxInput.value.trim(),
@@ -50,17 +50,19 @@ function updateInfoList(info) {
     })
 }
 
-chrome.storage.local.get(['Info'], (result) => {
-    if(result.Info) {
-        result.Info.forEach(item => {
-            const li = document.createElement('li')
-            li.textContent = item.text
-            copies.appendChild(li)
-        })
-    }
-    else {
-        const p = document.createElement('p')
-        p.textContent = "No copies saved"
-        copies.appendChild(p)
-    }
+document.addEventListener('DOMContentLoaded', () => {
+    chrome.storage.local.get(['Info'], (result) => {
+        if(result.Info) {
+            result.Info.forEach(item => {
+                const li = document.createElement('li')
+                li.textContent = item.text
+                copies.appendChild(li)
+            })
+        }
+        else {
+            const p = document.createElement('p')
+            p.textContent = "No copies saved"
+            copies.appendChild(p)
+        }
+    })
 })
