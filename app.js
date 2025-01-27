@@ -5,6 +5,7 @@ const socialInput = document.querySelector(".socialInput")
 const saveButtonInfo = document.querySelector(".saveButtonInfo")
 const saveButtonSocial = document.querySelector(".saveButtonSocial")
 const infoBoxInput = document.querySelector(".textInputInfo")
+const copies = document.querySelector(".copies")
 
 function hideAll() {
     informationInput.classList.add("hidden")
@@ -34,7 +35,32 @@ saveButtonInfo.addEventListener('click', () =>{
             info.push(newInfo)
             chrome.storage.local.set({ Info: info }, () => {
                 infoBoxInput.value = ''
+                updateInfoList(info)
             })
         })
+    }
+})
+
+function updateInfoList(info) {
+    copies.innerHTML = ''
+    info.forEach(item => {
+        const li = document.createElement('li')
+        li.textContent = item.text
+        copies.appendChild(li)
+    })
+}
+
+chrome.storage.local.get(['Info'], (result) => {
+    if(result.Info) {
+        result.Info.forEach(item => {
+            const li = document.createElement('li')
+            li.textContent = item.text
+            copies.appendChild(li)
+        })
+    }
+    else {
+        const p = document.createElement('p')
+        p.textContent = "No copies saved"
+        copies.appendChild(p)
     }
 })
