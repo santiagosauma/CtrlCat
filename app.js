@@ -1,7 +1,10 @@
-let infoButton = document.querySelector(".infoButton")
-let socialButton = document.querySelector(".socialButton")
-let informationInput = document.querySelector(".informationInput")
-let socialInput = document.querySelector(".socialInput")
+const infoButton = document.querySelector(".infoButton")
+const socialButton = document.querySelector(".socialButton")
+const informationInput = document.querySelector(".informationInput")
+const socialInput = document.querySelector(".socialInput")
+const saveButtonInfo = document.querySelector(".saveButtonInfo")
+const saveButtonSocial = document.querySelector(".saveButtonSocial")
+const infoBoxInput = document.querySelector(".textInputInfo")
 
 function hideAll() {
     informationInput.classList.add("hidden")
@@ -18,3 +21,20 @@ socialButton.addEventListener('click', () => {
     socialInput.classList.toggle("hidden")
 })
 
+saveButtonInfo.addEventListener('click', () =>{
+    if(infoBoxInput.value.trim()){
+        chrome.storage.local.get(['Info'], (result) =>
+        {
+            const info = result.info || []
+            const newInfo = {
+                id: Date.now(),
+                text: infoBoxInput.value.trim(),
+                type: "Information"
+            }
+            info.push(newInfo)
+            chrome.storage.local.set({ Info: info }, () => {
+                infoBoxInput.value = ''
+            })
+        })
+    }
+})
