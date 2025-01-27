@@ -44,18 +44,36 @@ saveButtonInfo.addEventListener('click', () =>{
 function updateInfoList(info) {
     copies.innerHTML = ''
     info.forEach(item => {
-        const li = document.createElement('li')
-        li.textContent = item.text
+        const li = document.createElement('li');
+        li.innerHTML = `
+        <span class="deleteBtn" data-id="${item.id}">X</span>
+        ${item.text}
+        `
         copies.appendChild(li)
     })
 }
+
+copies.addEventListener('click', (e) => {
+    if(e.target.classList.contains('deleteBtn')){
+        const id = Number(e.target.dataset.id)
+        chrome.storage.local.get(['Info'], (result) => {
+            const updatedInfo = result.Info.filter(item => item.id !== id)
+            chrome.storage.local.set({Info: updatedInfo}, () => {
+                updateInfoList(updatedInfo)
+            })
+        })
+    }
+})
 
 document.addEventListener('DOMContentLoaded', () => {
     chrome.storage.local.get(['Info'], (result) => {
         if(result.Info) {
             result.Info.forEach(item => {
                 const li = document.createElement('li')
-                li.textContent = item.text
+                li.innerHTML = `
+                <span class="deleteBtn" data-id="${item.id}">X</span>
+                ${item.text}
+                `
                 copies.appendChild(li)
             })
         }
