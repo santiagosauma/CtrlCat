@@ -7,6 +7,7 @@ const saveButtonSocial = document.querySelector(".saveButtonSocial")
 const infoBoxInput = document.querySelector(".textInputInfo")
 const copies = document.querySelector(".copies")
 const addInfoButton = document.querySelector(".addInfoButton")
+const cancelButtonInfo = document.querySelector(".cancelButtonInfo")
 
 function hideAll() {
     informationInput.classList.add("hidden")
@@ -43,6 +44,7 @@ saveButtonInfo.addEventListener('click', () =>{
         saveButtonInfo.classList.toggle('hidden')
         copies.classList.toggle('hidden')
         addInfoButton.classList.toggle('hidden')
+        cancelButtonInfo.classList.toggle('hidden')
     }
 })
 
@@ -66,7 +68,11 @@ copies.addEventListener('click', (e) => {
             chrome.storage.local.set({Info: updatedInfo}, () => {
                 updateInfoList(updatedInfo)
             })
+
         })
+        const li = document.createElement('li')
+            li.innerHTML = "<p>No copies saved!</p>"
+            copies.appendChild(li)
     }
 })
 
@@ -93,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
 addInfoButton.addEventListener('click', () =>{
     infoBoxInput.classList.toggle('hidden')
     saveButtonInfo.classList.toggle('hidden')
+    cancelButtonInfo.classList.toggle('hidden')
     copies.classList.toggle('hidden')
     document.querySelectorAll(".copies li").forEach(item => {
         item.classList.toggle('hidden');
