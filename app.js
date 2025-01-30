@@ -106,3 +106,14 @@ addInfoButton.addEventListener('click', () =>{
     });
     addInfoButton.classList.toggle('hidden')
 })
+
+cancelButtonInfo.addEventListener('click', () => {
+    saveButtonInfo.classList.toggle('hidden')
+    cancelButtonInfo.classList.toggle('hidden')
+    infoBoxInput.classList.toggle('hidden')
+    copies.classList.toggle('hidden')
+    document.querySelectorAll(".copies li").forEach(item => {
+        item.classList.toggle('hidden');
+    });
+    addInfoButton.classList.toggle('hidden')
+})
