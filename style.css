@@ -1,9 +1,20 @@
 body {
-    margin: 0;
-    padding: 0;
-    min-width: 15.625rem;
-    min-height: 18.75rem;
-    background-color: #FEFBE3;
+  margin: 0;
+  padding: 0;
+  min-width: 15.625rem;
+  min-height: 18.75rem;
+  background-color: #FEFBE3;
+  margin: auto 0.4em;
+  box-shadow: 
+    -6px 0 0 0 black,
+    6px 0 0 0 black,
+    0 -6px 0 0 black,
+    0 6px 0 0 black,
+    -6px -6px 0 0 red,
+    6px -6px 0 0 red,
+    -6px 6px 0 0 red,
+    6px 6px 0 0 red;
+  position: relative;
 }
 
 .Title {
