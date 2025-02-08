@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Sora:wght@100..800&display=swap');
+
 body {
   padding: 10px 0.5em 0.5em 0.5em;
   min-width: 15.625rem;
@@ -5,22 +7,26 @@ body {
   background-color: #FEFBE3;
   margin: 0.5em 0.5em;
   box-shadow: 
-    -6px 0 0 0 black,
-    6px 0 0 0 black,
-    0 -6px 0 0 black,
-    0 6px 0 0 black,
-    -6px -6px 0 0 red,
-    6px -6px 0 0 red,
-    -6px 6px 0 0 red,
-    6px 6px 0 0 red;
+    -6px 0 0 0 #FFA600,
+    6px 0 0 0 #FFA600,
+    0 -6px 0 0 #FFA600,
+    0 6px 0 0 #FFA600,
+    -6px -6px 0 0 #BFBFBF,
+    6px -6px 0 0 #BFBFBF,
+    -6px 6px 0 0 #BFBFBF,
+    6px 6px 0 0 #BFBFBF;
   position: relative;
 }
 
 .title {
+    font-family: "Pixelify Sans", serif;
+    font-size: 38px;
+    color:#FFA600;
     margin: 0.75rem;
     margin-top: 0;
     display: flex;
     justify-content: center;
+    text-shadow: -2px 2px black;
 }
 
 .buttons {
@@ -95,4 +101,73 @@ body {
 
 .deleteBtn:hover {
   opacity: 0.7
+}
+
+/* Main Page buttons */
+
+.Mainbuttons {
+  padding: 0px;
+  font-size: 8px;
+  background-color: #4245a8;
+  color: #fefbe1;
+  text-shadow: 0 2px 0 rgb(0 0 0 / 25%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 0;
+  z-index: 1;
+  user-select: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: unset;
+  padding: .4rem 1rem;
+  text-decoration: none;
+  font-weight: 900;
+  transition: all 0.7s cubic-bezier(0,.8,.26,.99);
+}
+
+.Mainbuttons:before {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  content: '';
+  transition: .7s cubic-bezier(0,.8,.26,.99);
+  z-index: -1;
+  background-color: #4245a8;
+  box-shadow: 0 -4px rgb(0 0 0 / 50%) inset, 0 4px rgb(255 255 255 / 20%) inset, -4px 0 rgb(255 255 255 / 20%) inset, 4px 0 rgb(0 0 0 / 50%) inset;
+}
+
+.Mainbuttons:after {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  content: '';
+  box-shadow: 0 4px 0 0 rgb(0 0 0 / 15%);
+  transition: .7s cubic-bezier(0,.8,.26,.99);
+}
+
+.Mainbuttons:hover:before {
+  box-shadow: 0 -4px rgb(0 0 0 / 50%) inset, 0 4px rgb(255 255 255 / 20%) inset, -4px 0 rgb(255 255 255 / 20%) inset, 4px 0 rgb(0 0 0 / 50%) inset;
+}
+
+.Mainbuttons:hover:after {
+  box-shadow: 0 4px 0 0 rgb(0 0 0 / 15%);
+}
+
+.Mainbuttons:active {
+  transform: translateY(4px);
+}
+
+.Mainbuttons:active:after {
+  box-shadow: 0 0px 0 0 rgb(0 0 0 / 15%);
 }
