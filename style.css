@@ -1,10 +1,9 @@
 body {
-  margin: 0;
-  padding: 0;
+  padding: 10px 0.5em 0.5em 0.5em;
   min-width: 15.625rem;
   min-height: 18.75rem;
   background-color: #FEFBE3;
-  margin: auto 0.4em;
+  margin: 0.5em 0.5em;
   box-shadow: 
     -6px 0 0 0 black,
     6px 0 0 0 black,
@@ -17,8 +16,9 @@ body {
   position: relative;
 }
 
-.Title {
+.title {
     margin: 0.75rem;
+    margin-top: 0;
     display: flex;
     justify-content: center;
 }
