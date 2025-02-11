@@ -184,6 +184,10 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.toggle('hidden');
         });
         addInfoButton.classList.toggle('hidden');
+        const defaultInfoMessage = document.querySelector('.default-message');
+        if (defaultInfoMessage) {
+            defaultInfoMessage.remove();
+        }
     });
 
     addSocialButton.addEventListener('click', () => {
@@ -208,6 +212,12 @@ cancelButtonInfo.addEventListener('click', () => {
         item.classList.toggle('hidden');
     });
     addInfoButton.classList.toggle('hidden');
+    if (copies.children.length === 0) {
+        const defaultInfoMessage = document.createElement('li');
+        defaultInfoMessage.textContent = 'No information available';
+        defaultInfoMessage.classList.add('default-message');
+        copies.appendChild(defaultInfoMessage);
+    }
 });
 
 cancelButtonSocial.addEventListener('click', () => {
@@ -220,4 +230,11 @@ cancelButtonSocial.addEventListener('click', () => {
         item.classList.toggle('hidden');
     });
     addSocialButton.classList.toggle('hidden');
+    // Restore default message if no items are present
+    if (socialCopies.children.length === 0) {
+        const defaultSocialMessage = document.createElement('li');
+        defaultSocialMessage.textContent = 'No social links available';
+        defaultSocialMessage.classList.add('default-message');
+        socialCopies.appendChild(defaultSocialMessage);
+    }
 });
