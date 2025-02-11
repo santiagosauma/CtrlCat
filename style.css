@@ -18,6 +18,14 @@ body {
   position: relative;
 }
 
+.title, .buttons, .informationInput, .socialInput, .copies, .social-copies {
+    width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0 5%;
+}
+
 .title {
     font-family: "Pixelify Sans", serif;
     font-size: 38px;
@@ -27,16 +35,22 @@ body {
     display: flex;
     justify-content: center;
     text-shadow: -2px 2px black;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .buttons {
     display: flex;
     justify-content: center;
     gap: 0.625rem;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .informationInput, .socialInput {
-    margin-top: 0.75rem;
+    margin-top: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,11 +58,12 @@ body {
     flex-direction: column;
     justify-content: center;
     row-gap: 0.5rem;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-.textInput{
-  height: 8rem;
-  width: 12rem;
+.textInputInfo, .textInputSocial {
+    margin-top: 1rem;
 }
 
 .hidden {
@@ -61,6 +76,25 @@ body {
   width: 100%;
   flex-direction: column;
   list-style: none;
+}
+
+.copies li, .social-copies li {
+    background-color: white;
+    border: 2px dashed #FFA600;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "VT323", monospace;
+    width: 100%;
+    box-sizing: border-box;
+    flex-direction: row-reverse;
+}
+
+.copies li .deleteBtn, .social-copies li .deleteBtn {
+    font-family: "Pixelify Sans", serif;
+    font-size: 16px;
 }
 
 .deleteBtn {
@@ -140,4 +174,11 @@ body {
 
 .Mainbuttons:active:after {
   box-shadow: 0 0px 0 0 rgb(0 0 0 / 15%);
+}
+
+.default-message {
+    font-family: "VT323", monospace;
+    color: #BFBFBF;
+    text-align: center;
+    padding: 0.5rem;
 }
