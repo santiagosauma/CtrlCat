@@ -163,11 +163,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Initial check
     updateDefaultMessage(copiesList, defaultInfoMessage);
     updateDefaultMessage(socialCopiesList, defaultSocialMessage);
 
-    // Example delete button event listener
     document.addEventListener('click', (event) => {
         if (event.target.classList.contains('deleteBtn')) {
             const listItem = event.target.closest('li');
@@ -177,7 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Example add button event listener
     addInfoButton.addEventListener('click', () => {
         infoBoxInput.classList.toggle('hidden');
         saveButtonInfo.classList.toggle('hidden');
