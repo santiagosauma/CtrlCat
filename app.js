@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll(".copies li").forEach(item => {
             item.style.display = 'none';
         });
-        addInfoButton.classList.toggle('hidden');
+        addInfoButton.style.display = 'none'; // Hide the add button
         const defaultInfoMessage = document.querySelector('.default-message');
         if (defaultInfoMessage) {
             defaultInfoMessage.remove();
@@ -197,9 +197,13 @@ document.addEventListener('DOMContentLoaded', () => {
         cancelButtonSocial.classList.toggle('hidden');
         socialCopies.classList.toggle('hidden');
         document.querySelectorAll(".social-copies li").forEach(item => {
-            item.classList.toggle('hidden');
+            item.style.display = 'none';
         });
-        addSocialButton.classList.toggle('hidden');
+        addSocialButton.style.display = 'none';
+        const defaultSocialMessage = document.querySelector('.default-message');
+        if (defaultSocialMessage) {
+            defaultSocialMessage.remove();
+        }
         socialCopies.classList.add('scrollable');
     });
 });
@@ -211,9 +215,9 @@ cancelButtonInfo.addEventListener('click', () => {
     infoBoxInput.classList.toggle('hidden');
     copies.classList.toggle('hidden');
     document.querySelectorAll(".copies li").forEach(item => {
-        item.classList.toggle('hidden');
+        item.style.display = 'flex'; // Show list items again
     });
-    addInfoButton.classList.toggle('hidden');
+    addInfoButton.style.display = 'inline-block';
     if (copies.children.length === 0) {
         const defaultInfoMessage = document.createElement('li');
         defaultInfoMessage.textContent = 'No information available';
@@ -229,9 +233,9 @@ cancelButtonSocial.addEventListener('click', () => {
     socialBoxInput.classList.toggle('hidden');
     socialCopies.classList.toggle('hidden');
     document.querySelectorAll(".social-copies li").forEach(item => {
-        item.classList.toggle('hidden');
+        item.style.display = 'flex'
     });
-    addSocialButton.classList.toggle('hidden');
+    addSocialButton.style.display = 'inline-block';
     if (socialCopies.children.length === 0) {
         const defaultSocialMessage = document.createElement('li');
         defaultSocialMessage.textContent = 'No social links available';
