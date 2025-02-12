@@ -111,7 +111,13 @@ saveButtonSocial.addEventListener('click', () => {
         addSocialButton.style.display = 'inline-block';
         cancelButtonSocial.classList.toggle('hidden');
     }
-});
+})
+
+function showCopyMessage() {
+    const message = document.querySelector('.copy-message');
+    message.classList.add('show');
+    setTimeout(() => message.classList.remove('show'), 1500);
+}
 
 function updateInfoList(info) {
     copies.innerHTML = '';
@@ -124,6 +130,18 @@ function updateInfoList(info) {
             <span class="deleteBtn" data-id="${item.id}">X</span>
             <span class="full-text">${item.text}</span>
             `;
+            li.addEventListener('click', async (e) => {
+                if (!e.target.classList.contains('deleteBtn')) {
+                    try {
+                        await navigator.clipboard.writeText(item.text);
+                        li.classList.add('copied');
+                        setTimeout(() => li.classList.remove('copied'), 500);
+                        showCopyMessage();
+                    } catch (err) {
+                        console.error('Failed to copy text: ', err);
+                    }
+                }
+            });
             copies.appendChild(li);
         });
     }
@@ -151,6 +169,18 @@ function updateSocialList(social) {
             <span class="deleteBtn" data-id="${item.id}">X</span>
             <span class="truncated-text">${item.text}</span>
             `;
+            li.addEventListener('click', async (e) => {
+                if (!e.target.classList.contains('deleteBtn')) {
+                    try {
+                        await navigator.clipboard.writeText(item.text);
+                        li.classList.add('copied');
+                        setTimeout(() => li.classList.remove('copied'), 500);
+                        showCopyMessage();
+                    } catch (err) {
+                        console.error('Failed to copy text: ', err);
+                    }
+                }
+            });
             socialCopies.appendChild(li);
         });
     }

@@ -96,6 +96,7 @@ body {
     flex-direction: row;
     word-wrap: break-word;
     position: relative;
+    cursor: pointer;
 }
 
 .copies li .deleteBtn, .social-copies li .deleteBtn {
@@ -265,4 +266,37 @@ body {
 
 .copies::-webkit-scrollbar-thumb:hover, .social-copies::-webkit-scrollbar-thumb:hover {
     background: #FF8C00;
+}
+
+.copyable {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.copyable:hover {
+    background-color: #f0f0f0;
+}
+
+.copied {
+    background-color: #e0ffe0 !important;
+}
+
+.copy-message {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #FFA600;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-family: "VT323", monospace;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+    margin-bottom: 20px
+}
+
+.copy-message.show {
+    opacity: 1;
 }
