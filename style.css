@@ -224,6 +224,7 @@ body {
     cursor: pointer;
     display: inline-block;
     margin: 0 auto;
+    margin-bottom: 0.5rem;
 }
 
 .addInfoButton:focus, .addSocialButton:focus {
