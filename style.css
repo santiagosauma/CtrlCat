@@ -211,3 +211,19 @@ body {
     flex-grow: 1;
     margin-right: 30px;
 }
+
+.addInfoButton, .addSocialButton {
+    background: url('plus.png') no-repeat center center;
+    background-size: 16px 16px;
+    width: 180px;
+    height: 2.5em;
+    border: 2px dashed #FFA600;
+    background-color: white;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.addInfoButton:focus, .addSocialButton:focus {
+    outline: none;
+}
