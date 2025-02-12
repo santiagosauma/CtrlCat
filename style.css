@@ -85,16 +85,22 @@ body {
     margin: 0.5rem 0;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     font-family: "VT323", monospace;
     width: 100%;
     box-sizing: border-box;
-    flex-direction: row-reverse;
+    flex-direction: row;
+    word-wrap: break-word;
+    position: relative;
 }
 
 .copies li .deleteBtn, .social-copies li .deleteBtn {
     font-family: "Pixelify Sans", serif;
     font-size: 16px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .deleteBtn {
@@ -181,4 +187,27 @@ body {
     color: #BFBFBF;
     text-align: center;
     padding: 0.5rem;
+}
+
+.truncated-text {
+  display: inline-block;
+  max-width: calc(100% - 40px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.scrollable {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.full-text {
+    display: block;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: none;
+    flex-grow: 1;
+    margin-right: 30px;
 }

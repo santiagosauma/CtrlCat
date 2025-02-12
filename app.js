@@ -86,7 +86,7 @@ function updateInfoList(info) {
             const li = document.createElement('li');
             li.innerHTML = `
             <span class="deleteBtn" data-id="${item.id}">X</span>
-            ${item.text}
+            <span class="full-text">${item.text}</span>
             `;
             copies.appendChild(li);
         });
@@ -105,7 +105,7 @@ function updateSocialList(social) {
             const li = document.createElement('li');
             li.innerHTML = `
             <span class="deleteBtn" data-id="${item.id}">X</span>
-            ${item.text}
+            <span class="truncated-text">${item.text}</span>
             `;
             socialCopies.appendChild(li);
         });
@@ -181,13 +181,14 @@ document.addEventListener('DOMContentLoaded', () => {
         cancelButtonInfo.classList.toggle('hidden');
         copies.classList.toggle('hidden');
         document.querySelectorAll(".copies li").forEach(item => {
-            item.classList.toggle('hidden');
+            item.style.display = 'none';
         });
         addInfoButton.classList.toggle('hidden');
         const defaultInfoMessage = document.querySelector('.default-message');
         if (defaultInfoMessage) {
             defaultInfoMessage.remove();
         }
+        copies.classList.add('scrollable');
     });
 
     addSocialButton.addEventListener('click', () => {
@@ -199,6 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.toggle('hidden');
         });
         addSocialButton.classList.toggle('hidden');
+        socialCopies.classList.add('scrollable');
     });
 });
 
@@ -230,7 +232,6 @@ cancelButtonSocial.addEventListener('click', () => {
         item.classList.toggle('hidden');
     });
     addSocialButton.classList.toggle('hidden');
-    // Restore default message if no items are present
     if (socialCopies.children.length === 0) {
         const defaultSocialMessage = document.createElement('li');
         defaultSocialMessage.textContent = 'No social links available';

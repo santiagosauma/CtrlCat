@@ -1,0 +1,12 @@
+.truncated-text {
+    display: inline-block;
+    max-width: 200px; /* Adjust as needed */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.scrollable {
+    max-height: 200px; /* Adjust as needed */
+    overflow-y: auto;
+}
