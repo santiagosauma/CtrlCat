@@ -18,14 +18,53 @@ function hideAll() {
     socialInput.classList.add("hidden");
 }
 
+function handleInfoVisibility(show) {
+    if (show) {
+        chrome.storage.local.get(['Info'], (result) => {
+            const info = result.Info || [];
+            if (info.length === 0) {
+                showDefaultInfoMessage();
+            } else {
+                updateInfoList(info);
+                document.querySelectorAll(".copies li").forEach(item => {
+                    item.style.display = 'flex';
+                });
+            }
+        });
+    }
+    copies.classList.toggle('hidden', !show);
+}
+
+function handleSocialVisibility(show) {
+    if (show) {
+        chrome.storage.local.get(['Social'], (result) => {
+            const social = result.Social || [];
+            if (social.length === 0) {
+                const defaultSocialMessage = document.createElement('li');
+                defaultSocialMessage.textContent = 'No social links available';
+                defaultSocialMessage.classList.add('default-message');
+                socialCopies.innerHTML = '';
+                socialCopies.appendChild(defaultSocialMessage);
+            } else {
+                updateSocialList(social);
+            }
+        });
+    }
+    socialCopies.classList.toggle('hidden', !show);
+}
+
 infoButton.addEventListener('click', () => {
     hideAll();
     informationInput.classList.toggle("hidden");
+    handleInfoVisibility(true);
+    handleSocialVisibility(false);
 });
 
 socialButton.addEventListener('click', () => {
     hideAll();
     socialInput.classList.toggle("hidden");
+    handleSocialVisibility(true);
+    handleInfoVisibility(false);
 });
 
 saveButtonInfo.addEventListener('click', () => {
@@ -76,11 +115,8 @@ saveButtonSocial.addEventListener('click', () => {
 
 function updateInfoList(info) {
     copies.innerHTML = '';
-    if (info.length === 0) {
-        const defaultInfoMessage = document.createElement('li');
-        defaultInfoMessage.textContent = 'No information available';
-        defaultInfoMessage.classList.add('default-message');
-        copies.appendChild(defaultInfoMessage);
+    if (!info || info.length === 0) {
+        showDefaultInfoMessage();
     } else {
         info.forEach(item => {
             const li = document.createElement('li');
@@ -91,6 +127,14 @@ function updateInfoList(info) {
             copies.appendChild(li);
         });
     }
+}
+
+function showDefaultInfoMessage() {
+    const defaultInfoMessage = document.createElement('li');
+    defaultInfoMessage.textContent = 'No information available';
+    defaultInfoMessage.classList.add('default-message');
+    copies.innerHTML = '';
+    copies.appendChild(defaultInfoMessage);
 }
 
 function updateSocialList(social) {
@@ -184,10 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
             item.style.display = 'none';
         });
         addInfoButton.style.display = 'none';
-        const defaultInfoMessage = document.querySelector('.default-message');
-        if (defaultInfoMessage) {
-            defaultInfoMessage.remove();
-        }
         copies.classList.add('scrollable');
     });
 
@@ -213,17 +253,8 @@ cancelButtonInfo.addEventListener('click', () => {
     cancelButtonInfo.classList.toggle('hidden');
     infoBoxInput.value = "";
     infoBoxInput.classList.toggle('hidden');
-    copies.classList.toggle('hidden');
-    document.querySelectorAll(".copies li").forEach(item => {
-        item.style.display = 'flex';
-    });
     addInfoButton.style.display = 'inline-block';
-    if (copies.children.length === 0) {
-        const defaultInfoMessage = document.createElement('li');
-        defaultInfoMessage.textContent = 'No information available';
-        defaultInfoMessage.classList.add('default-message');
-        copies.appendChild(defaultInfoMessage);
-    }
+    handleInfoVisibility(true);
 });
 
 cancelButtonSocial.addEventListener('click', () => {
@@ -231,15 +262,6 @@ cancelButtonSocial.addEventListener('click', () => {
     cancelButtonSocial.classList.toggle('hidden');
     socialBoxInput.value = "";
     socialBoxInput.classList.toggle('hidden');
-    socialCopies.classList.toggle('hidden');
-    document.querySelectorAll(".social-copies li").forEach(item => {
-        item.style.display = 'flex'
-    });
     addSocialButton.style.display = 'inline-block';
-    if (socialCopies.children.length === 0) {
-        const defaultSocialMessage = document.createElement('li');
-        defaultSocialMessage.textContent = 'No social links available';
-        defaultSocialMessage.classList.add('default-message');
-        socialCopies.appendChild(defaultSocialMessage);
-    }
+    handleSocialVisibility(true);
 });
