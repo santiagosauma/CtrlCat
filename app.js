@@ -46,7 +46,7 @@ saveButtonInfo.addEventListener('click', () => {
         infoBoxInput.classList.toggle('hidden');
         saveButtonInfo.classList.toggle('hidden');
         copies.classList.toggle('hidden');
-        addInfoButton.classList.toggle('hidden');
+        addInfoButton.style.display = 'inline-block';
         cancelButtonInfo.classList.toggle('hidden');
     }
 });
@@ -69,7 +69,7 @@ saveButtonSocial.addEventListener('click', () => {
         socialBoxInput.classList.toggle('hidden');
         saveButtonSocial.classList.toggle('hidden');
         socialCopies.classList.toggle('hidden');
-        addSocialButton.classList.toggle('hidden');
+        addSocialButton.style.display = 'inline-block';
         cancelButtonSocial.classList.toggle('hidden');
     }
 });
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll(".copies li").forEach(item => {
             item.style.display = 'none';
         });
-        addInfoButton.style.display = 'none'; // Hide the add button
+        addInfoButton.style.display = 'none';
         const defaultInfoMessage = document.querySelector('.default-message');
         if (defaultInfoMessage) {
             defaultInfoMessage.remove();
@@ -215,7 +215,7 @@ cancelButtonInfo.addEventListener('click', () => {
     infoBoxInput.classList.toggle('hidden');
     copies.classList.toggle('hidden');
     document.querySelectorAll(".copies li").forEach(item => {
-        item.style.display = 'flex'; // Show list items again
+        item.style.display = 'flex';
     });
     addInfoButton.style.display = 'inline-block';
     if (copies.children.length === 0) {
